@@ -1,0 +1,42 @@
+def solve(inp):
+    nums=inp.split(" ")
+    R = int(nums[0])
+    C = int(nums[1])
+    output = []
+    for i in range(R):
+        str1 = ""
+        str2 = ""
+        str3 = ""
+        for j in range(C):
+            if (i==0):
+                if (j==0):
+                    str1 = "..+"
+                    str2 = "..|"
+                    str3 = "+-+"
+                else:
+                    str1 = str1 + "-+"
+                    str2 = str2 + ".|"
+                    str3 = str3 + "-+"
+            elif j==0:
+                str1 = str1 + "|.|"
+                str2 = str2 + "+-+"
+            else:
+                str1 = str1 + ".|"
+                str2 = str2 + "-+"
+
+        output.append(str1)
+        output.append(str2)
+        if(i==0):
+            output.append(str3)
+    return(output)
+
+
+
+if __name__== "__main__" :
+    testcases = int(input())
+    for caseNr in range(1, testcases + 1):
+        inp = input()
+        print("Case #"+ str(caseNr) + ":")
+        out=solve(inp)
+        for x in out:
+            print(x)
