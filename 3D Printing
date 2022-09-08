@@ -1,0 +1,38 @@
+def solve(inp1,inp2,inp3):
+    inp1=inp1.split(" ")
+    inp2=inp2.split(" ")
+    inp3=inp3.split(" ")
+    lim = []
+    lim.append( min(int(inp1[0]),int(inp2[0]),int(inp3[0])) )
+    lim.append( min(int(inp1[1]),int(inp2[1]),int(inp3[1])) )
+    lim.append( min(int(inp1[2]),int(inp2[2]),int(inp3[2])) )
+    lim.append( min(int(inp1[3]),int(inp2[3]),int(inp3[3])) )
+    count = 0
+    output=[]
+    for i in range(4):
+        if lim[i] + count <= 1000000:
+            output.append(lim[i])
+            count = count + lim[i]
+        else:
+            temp = (lim[i] + count) - 1000000
+            limnum =  lim[i] - temp
+            output.append(limnum)
+            count = 1000000
+        if count == 1000000:
+            for j in range(4-(i+1)):
+                output.append(0)
+            return output
+    return None
+
+if __name__== "__main__" :
+    testcases = int(input())
+    for caseNr in range(1, testcases + 1):
+        inp1 = input()
+        inp2 = input()
+        inp3 = input()
+        
+        output=solve(inp1,inp2,inp3)
+        if (output == None):
+            print("Case #"+ str(caseNr) + ": IMPOSSIBLE")
+        else:
+            print("Case #"+ str(caseNr) + ": " + str(output).strip('[]').replace(',', ''))
