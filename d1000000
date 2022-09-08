@@ -1,0 +1,18 @@
+def solve(N,sides):
+    N = int(N)
+    sides = sides.split(" ")
+    sides = list(map(int, sides))
+    sides.sort()
+    count = 0
+    for x in sides:
+        if x>count:
+            count = count + 1
+    return count
+
+if __name__== "__main__" :
+    testcases = int(input())
+    for caseNr in range(1, testcases + 1):
+        N = input()
+        sides = input()
+        output = solve(N,sides)
+        print("Case #"+ str(caseNr) + ": " + str(output))
